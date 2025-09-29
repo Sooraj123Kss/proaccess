@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0152)https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/6b85444de6c311fec8c69b6156829b05/977b7da1-980e-41de-b752-5293493d461c/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AssetFlow Pro - Content Creator Asset Management</title>
-    <link rel="stylesheet" href="./AssetFlow Pro - Content Creator Asset Management_files/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Main Navigation -->
@@ -40,7 +40,7 @@
             <!-- Search and Filters -->
             <div class="search-container">
                 <div class="search-bar">
-                    <input type="text" id="search-input" class="form-control" placeholder="Search across all asset sources...">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search across all asset sources..." />
                     <button class="btn btn--primary" id="search-btn">Search</button>
                 </div>
                 <div class="search-filters">
@@ -75,7 +75,9 @@
             </div>
 
             <!-- Asset Results Grid -->
-            <div class="asset-grid" id="asset-results"></div>
+            <div class="asset-grid" id="asset-results">
+                <!-- Assets will be populated by JavaScript -->
+            </div>
 
             <!-- Load More Button -->
             <div class="load-more-container">
@@ -106,7 +108,7 @@
                                 <span class="stat-label">Total Assets</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number" id="total-collections">1</span>
+                                <span class="stat-number" id="total-collections">0</span>
                                 <span class="stat-label">Collections</span>
                             </div>
                             <div class="stat-item">
@@ -249,7 +251,7 @@
                             <button class="btn btn--primary" id="generate-attribution-btn">Generate</button>
                         </div>
                         <div class="attribution-output">
-                            <textarea class="form-control" id="attribution-text" placeholder="Generated attributions will appear here..." readonly="" rows="5"></textarea>
+                            <textarea class="form-control" id="attribution-text" placeholder="Generated attributions will appear here..." readonly rows="5"></textarea>
                             <button class="btn btn--sm btn--secondary" id="copy-attribution-btn">Copy to Clipboard</button>
                         </div>
                     </div>
@@ -262,27 +264,27 @@
                         <div class="checklist" id="compliance-checklist">
                             <div class="checklist-item">
                                 <label class="form-label">
-                                    <input type="checkbox" disabled=""> Verify license type and terms
+                                    <input type="checkbox" disabled> Verify license type and terms
                                 </label>
                             </div>
                             <div class="checklist-item">
                                 <label class="form-label">
-                                    <input type="checkbox" disabled=""> Check attribution requirements
+                                    <input type="checkbox" disabled> Check attribution requirements
                                 </label>
                             </div>
                             <div class="checklist-item">
                                 <label class="form-label">
-                                    <input type="checkbox" disabled=""> Confirm commercial use permissions
+                                    <input type="checkbox" disabled> Confirm commercial use permissions
                                 </label>
                             </div>
                             <div class="checklist-item">
                                 <label class="form-label">
-                                    <input type="checkbox" disabled=""> Look for visible trademarks
+                                    <input type="checkbox" disabled> Look for visible trademarks
                                 </label>
                             </div>
                             <div class="checklist-item">
                                 <label class="form-label">
-                                    <input type="checkbox" disabled=""> Check for identifiable people
+                                    <input type="checkbox" disabled> Check for identifiable people
                                 </label>
                             </div>
                         </div>
@@ -308,167 +310,8 @@
                     <div class="card__body">
                         <h3>Understanding License Types</h3>
                         <div class="license-list" id="license-list">
-      <div class="license-item">
-        <div class="license-header">
-          <h3 class="license-name">Public Domain</h3>
-          <span class="license-code">CC0</span>
-        </div>
-        <p class="license-description">No rights reserved - complete freedom to use</p>
-        <div class="license-permissions">
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Commercial Use</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Attribution Optional</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Modifications</span>
-          </div>
-          
-        </div>
-      </div>
-    
-      <div class="license-item">
-        <div class="license-header">
-          <h3 class="license-name">Attribution</h3>
-          <span class="license-code">CC BY</span>
-        </div>
-        <p class="license-description">Must give appropriate credit to creator</p>
-        <div class="license-permissions">
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Commercial Use</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon required">⚠️</span>
-            <span>Attribution Required</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Modifications</span>
-          </div>
-          
-        </div>
-      </div>
-    
-      <div class="license-item">
-        <div class="license-header">
-          <h3 class="license-name">Attribution-ShareAlike</h3>
-          <span class="license-code">CC BY-SA</span>
-        </div>
-        <p class="license-description">Must credit and use same license for derivatives</p>
-        <div class="license-permissions">
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Commercial Use</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon required">⚠️</span>
-            <span>Attribution Required</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Modifications</span>
-          </div>
-          <div class="permission-item"><span class="permission-icon required">⚠️</span><span>Share Alike Required</span></div>
-        </div>
-      </div>
-    
-      <div class="license-item">
-        <div class="license-header">
-          <h3 class="license-name">Attribution-NonCommercial</h3>
-          <span class="license-code">CC BY-NC</span>
-        </div>
-        <p class="license-description">Credit required, no commercial use allowed</p>
-        <div class="license-permissions">
-          <div class="permission-item">
-            <span class="permission-icon forbidden">❌</span>
-            <span>Commercial Use</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon required">⚠️</span>
-            <span>Attribution Required</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Modifications</span>
-          </div>
-          
-        </div>
-      </div>
-    
-      <div class="license-item">
-        <div class="license-header">
-          <h3 class="license-name">Attribution-NonCommercial-ShareAlike</h3>
-          <span class="license-code">CC BY-NC-SA</span>
-        </div>
-        <p class="license-description">Most restrictive CC license</p>
-        <div class="license-permissions">
-          <div class="permission-item">
-            <span class="permission-icon forbidden">❌</span>
-            <span>Commercial Use</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon required">⚠️</span>
-            <span>Attribution Required</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Modifications</span>
-          </div>
-          <div class="permission-item"><span class="permission-icon required">⚠️</span><span>Share Alike Required</span></div>
-        </div>
-      </div>
-    
-      <div class="license-item">
-        <div class="license-header">
-          <h3 class="license-name">Attribution-NoDerivatives</h3>
-          <span class="license-code">CC BY-ND</span>
-        </div>
-        <p class="license-description">Credit required, no modifications allowed</p>
-        <div class="license-permissions">
-          <div class="permission-item">
-            <span class="permission-icon allowed">✅</span>
-            <span>Commercial Use</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon required">⚠️</span>
-            <span>Attribution Required</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon forbidden">❌</span>
-            <span>Modifications</span>
-          </div>
-          
-        </div>
-      </div>
-    
-      <div class="license-item">
-        <div class="license-header">
-          <h3 class="license-name">Attribution-NonCommercial-NoDerivatives</h3>
-          <span class="license-code">CC BY-NC-ND</span>
-        </div>
-        <p class="license-description">Most restrictive, sharing only for non-commercial</p>
-        <div class="license-permissions">
-          <div class="permission-item">
-            <span class="permission-icon forbidden">❌</span>
-            <span>Commercial Use</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon required">⚠️</span>
-            <span>Attribution Required</span>
-          </div>
-          <div class="permission-item">
-            <span class="permission-icon forbidden">❌</span>
-            <span>Modifications</span>
-          </div>
-          
-        </div>
-      </div>
-    </div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
 
@@ -592,11 +435,11 @@
                         <div class="export-settings">
                             <div class="form-group">
                                 <label class="form-label">Include Asset Previews</label>
-                                <input type="checkbox" id="include-previews" checked="">
+                                <input type="checkbox" id="include-previews" checked>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Include License Details</label>
-                                <input type="checkbox" id="include-license-details" checked="">
+                                <input type="checkbox" id="include-license-details" checked>
                             </div>
                         </div>
                     </div>
@@ -610,12 +453,12 @@
         <div class="modal-content large">
             <div class="modal-header">
                 <h3 id="asset-title">Asset Preview</h3>
-                <button class="modal-close" id="modal-close-preview">×</button>
+                <button class="modal-close" id="modal-close-preview">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="asset-preview-container">
                     <div class="asset-preview-media">
-                        <img id="asset-preview-image" src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/6b85444de6c311fec8c69b6156829b05/977b7da1-980e-41de-b752-5293493d461c/index.html" alt="" class="preview-image">
+                        <img id="asset-preview-image" src="" alt="" class="preview-image">
                     </div>
                     <div class="asset-preview-details">
                         <div class="license-info">
@@ -651,7 +494,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Create New Collection</h3>
-                <button class="modal-close" id="modal-close-collection">×</button>
+                <button class="modal-close" id="modal-close-collection">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -685,6 +528,6 @@
         <p>Searching assets...</p>
     </div>
 
-    <script src="./AssetFlow Pro - Content Creator Asset Management_files/app.js.download"></script>
-
-</body></html>
+    <script src="app.js"></script>
+</body>
+</html>
