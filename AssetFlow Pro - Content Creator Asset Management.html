@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<!-- saved from url=(0152)https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/6b85444de6c311fec8c69b6156829b05/977b7da1-980e-41de-b752-5293493d461c/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AssetFlow Pro - Content Creator Asset Management</title>
+    <link rel="stylesheet" href="./AssetFlow Pro - Content Creator Asset Management_files/style.css">
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>AssetFlow Pro</h1>
+                <span class="beta-tag">Compliance Ready</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" data-section="discovery">Asset Discovery</button>
+                <button class="nav-link" data-section="library">My Library</button>
+                <button class="nav-link" data-section="projects">Projects</button>
+                <button class="nav-link" data-section="compliance">Compliance</button>
+                <button class="nav-link" data-section="education">CC Guide</button>
+                <button class="nav-link" data-section="reports">Reports</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Asset Discovery Section -->
+    <section id="discovery" class="section active">
+        <div class="container">
+            <div class="section-header">
+                <h2>Asset Discovery Hub</h2>
+                <div class="discovery-stats">
+                    <span class="stat-badge">6M+ Photos</span>
+                    <span class="stat-badge">1M+ Videos</span>
+                    <span class="stat-badge">100% Legal</span>
+                </div>
+            </div>
+
+            <!-- Search and Filters -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search across all asset sources...">
+                    <button class="btn btn--primary" id="search-btn">Search</button>
+                </div>
+                <div class="search-filters">
+                    <select class="form-control" id="filter-source">
+                        <option value="">All Sources</option>
+                        <option value="unsplash">Unsplash</option>
+                        <option value="pexels">Pexels</option>
+                        <option value="pixabay">Pixabay</option>
+                        <option value="burst">Burst</option>
+                    </select>
+                    <select class="form-control" id="filter-type">
+                        <option value="">All Types</option>
+                        <option value="images">Images</option>
+                        <option value="videos">Videos</option>
+                        <option value="music">Music</option>
+                    </select>
+                    <select class="form-control" id="filter-license">
+                        <option value="">All Licenses</option>
+                        <option value="cc0">Public Domain</option>
+                        <option value="attribution">Attribution Required</option>
+                        <option value="commercial">Commercial Use</option>
+                    </select>
+                    <select class="form-control" id="filter-category">
+                        <option value="">All Categories</option>
+                        <option value="business">Business</option>
+                        <option value="nature">Nature</option>
+                        <option value="technology">Technology</option>
+                        <option value="people">People</option>
+                        <option value="food">Food</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Asset Results Grid -->
+            <div class="asset-grid" id="asset-results"></div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="btn btn--secondary" id="load-more-btn">Load More Assets</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Library Section -->
+    <section id="library" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Asset Library</h2>
+                <div class="library-controls">
+                    <button class="btn btn--primary" id="create-collection-btn">Create Collection</button>
+                    <button class="btn btn--secondary" id="export-library-btn">Export Library</button>
+                </div>
+            </div>
+
+            <div class="library-grid">
+                <!-- Library Stats -->
+                <div class="card library-stats-card">
+                    <div class="card__body">
+                        <h3>Library Overview</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-assets">0</span>
+                                <span class="stat-label">Total Assets</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-collections">1</span>
+                                <span class="stat-label">Collections</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="compliance-score">100%</span>
+                                <span class="stat-label">Compliance Score</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collections -->
+                <div class="card collections-card">
+                    <div class="card__body">
+                        <h3>My Collections</h3>
+                        <div class="collections-list" id="collections-list">
+                            <div class="collection-item default">
+                                <div class="collection-info">
+                                    <h4>All Assets</h4>
+                                    <p>Default collection containing all saved assets</p>
+                                </div>
+                                <div class="collection-meta">
+                                    <span class="asset-count">0 assets</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Assets -->
+                <div class="card recent-assets-card">
+                    <div class="card__body">
+                        <h3>Recently Added</h3>
+                        <div class="recent-assets-list" id="recent-assets">
+                            <p class="empty-state">No assets saved yet. Start by searching and saving assets from the Discovery tab!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Project Manager</h2>
+                <div class="project-controls">
+                    <button class="btn btn--primary" id="create-project-btn">New Project</button>
+                    <select class="form-control" id="project-template-select">
+                        <option value="">Choose Template</option>
+                        <option value="social-media">Social Media Campaign</option>
+                        <option value="youtube">YouTube Video</option>
+                        <option value="website">Website Content</option>
+                        <option value="marketing">Marketing Materials</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project Cards -->
+                <div class="project-cards" id="project-cards">
+                    <div class="project-card sample">
+                        <div class="card">
+                            <div class="card__body">
+                                <div class="project-header">
+                                    <h3>Sample Social Media Campaign</h3>
+                                    <span class="project-status compliant">Compliant</span>
+                                </div>
+                                <div class="project-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Assets</span>
+                                        <span class="meta-value">0</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Platform</span>
+                                        <span class="meta-value">Instagram</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Created</span>
+                                        <span class="meta-value">Today</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="btn btn--sm btn--primary">Open Project</button>
+                                    <button class="btn btn--sm btn--outline">Generate Report</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Section -->
+    <section id="compliance" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>License Compliance Center</h2>
+                <div class="compliance-status">
+                    <span class="status status--success">All Systems Compliant</span>
+                </div>
+            </div>
+
+            <div class="compliance-grid">
+                <!-- Compliance Dashboard -->
+                <div class="card compliance-dashboard-card">
+                    <div class="card__body">
+                        <h3>Compliance Dashboard</h3>
+                        <div class="compliance-metrics">
+                            <div class="compliance-metric">
+                                <div class="metric-value">100%</div>
+                                <div class="metric-label">Assets Compliant</div>
+                                <div class="metric-indicator success"></div>
+                            </div>
+                            <div class="compliance-metric">
+                                <div class="metric-value">0</div>
+                                <div class="metric-label">Violations</div>
+                                <div class="metric-indicator success"></div>
+                            </div>
+                            <div class="compliance-metric">
+                                <div class="metric-value">0</div>
+                                <div class="metric-label">Expiring Licenses</div>
+                                <div class="metric-indicator success"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attribution Generator -->
+                <div class="card attribution-card">
+                    <div class="card__body">
+                        <h3>Attribution Generator</h3>
+                        <div class="attribution-controls">
+                            <select class="form-control" id="attribution-format">
+                                <option value="html">HTML Format</option>
+                                <option value="text">Plain Text</option>
+                                <option value="social">Social Media</option>
+                            </select>
+                            <button class="btn btn--primary" id="generate-attribution-btn">Generate</button>
+                        </div>
+                        <div class="attribution-output">
+                            <textarea class="form-control" id="attribution-text" placeholder="Generated attributions will appear here..." readonly="" rows="5"></textarea>
+                            <button class="btn btn--sm btn--secondary" id="copy-attribution-btn">Copy to Clipboard</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pre-Use Checklist -->
+                <div class="card checklist-card">
+                    <div class="card__body">
+                        <h3>Pre-Use Compliance Checklist</h3>
+                        <div class="checklist" id="compliance-checklist">
+                            <div class="checklist-item">
+                                <label class="form-label">
+                                    <input type="checkbox" disabled=""> Verify license type and terms
+                                </label>
+                            </div>
+                            <div class="checklist-item">
+                                <label class="form-label">
+                                    <input type="checkbox" disabled=""> Check attribution requirements
+                                </label>
+                            </div>
+                            <div class="checklist-item">
+                                <label class="form-label">
+                                    <input type="checkbox" disabled=""> Confirm commercial use permissions
+                                </label>
+                            </div>
+                            <div class="checklist-item">
+                                <label class="form-label">
+                                    <input type="checkbox" disabled=""> Look for visible trademarks
+                                </label>
+                            </div>
+                            <div class="checklist-item">
+                                <label class="form-label">
+                                    <input type="checkbox" disabled=""> Check for identifiable people
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Commons Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Creative Commons Guide</h2>
+                <div class="education-tools">
+                    <button class="btn btn--secondary" id="license-comparison-btn">Compare Licenses</button>
+                </div>
+            </div>
+
+            <div class="education-grid">
+                <!-- License Types -->
+                <div class="card license-types-card">
+                    <div class="card__body">
+                        <h3>Understanding License Types</h3>
+                        <div class="license-list" id="license-list">
+      <div class="license-item">
+        <div class="license-header">
+          <h3 class="license-name">Public Domain</h3>
+          <span class="license-code">CC0</span>
+        </div>
+        <p class="license-description">No rights reserved - complete freedom to use</p>
+        <div class="license-permissions">
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Commercial Use</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Attribution Optional</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Modifications</span>
+          </div>
+          
+        </div>
+      </div>
+    
+      <div class="license-item">
+        <div class="license-header">
+          <h3 class="license-name">Attribution</h3>
+          <span class="license-code">CC BY</span>
+        </div>
+        <p class="license-description">Must give appropriate credit to creator</p>
+        <div class="license-permissions">
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Commercial Use</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon required">⚠️</span>
+            <span>Attribution Required</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Modifications</span>
+          </div>
+          
+        </div>
+      </div>
+    
+      <div class="license-item">
+        <div class="license-header">
+          <h3 class="license-name">Attribution-ShareAlike</h3>
+          <span class="license-code">CC BY-SA</span>
+        </div>
+        <p class="license-description">Must credit and use same license for derivatives</p>
+        <div class="license-permissions">
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Commercial Use</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon required">⚠️</span>
+            <span>Attribution Required</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Modifications</span>
+          </div>
+          <div class="permission-item"><span class="permission-icon required">⚠️</span><span>Share Alike Required</span></div>
+        </div>
+      </div>
+    
+      <div class="license-item">
+        <div class="license-header">
+          <h3 class="license-name">Attribution-NonCommercial</h3>
+          <span class="license-code">CC BY-NC</span>
+        </div>
+        <p class="license-description">Credit required, no commercial use allowed</p>
+        <div class="license-permissions">
+          <div class="permission-item">
+            <span class="permission-icon forbidden">❌</span>
+            <span>Commercial Use</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon required">⚠️</span>
+            <span>Attribution Required</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Modifications</span>
+          </div>
+          
+        </div>
+      </div>
+    
+      <div class="license-item">
+        <div class="license-header">
+          <h3 class="license-name">Attribution-NonCommercial-ShareAlike</h3>
+          <span class="license-code">CC BY-NC-SA</span>
+        </div>
+        <p class="license-description">Most restrictive CC license</p>
+        <div class="license-permissions">
+          <div class="permission-item">
+            <span class="permission-icon forbidden">❌</span>
+            <span>Commercial Use</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon required">⚠️</span>
+            <span>Attribution Required</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Modifications</span>
+          </div>
+          <div class="permission-item"><span class="permission-icon required">⚠️</span><span>Share Alike Required</span></div>
+        </div>
+      </div>
+    
+      <div class="license-item">
+        <div class="license-header">
+          <h3 class="license-name">Attribution-NoDerivatives</h3>
+          <span class="license-code">CC BY-ND</span>
+        </div>
+        <p class="license-description">Credit required, no modifications allowed</p>
+        <div class="license-permissions">
+          <div class="permission-item">
+            <span class="permission-icon allowed">✅</span>
+            <span>Commercial Use</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon required">⚠️</span>
+            <span>Attribution Required</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon forbidden">❌</span>
+            <span>Modifications</span>
+          </div>
+          
+        </div>
+      </div>
+    
+      <div class="license-item">
+        <div class="license-header">
+          <h3 class="license-name">Attribution-NonCommercial-NoDerivatives</h3>
+          <span class="license-code">CC BY-NC-ND</span>
+        </div>
+        <p class="license-description">Most restrictive, sharing only for non-commercial</p>
+        <div class="license-permissions">
+          <div class="permission-item">
+            <span class="permission-icon forbidden">❌</span>
+            <span>Commercial Use</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon required">⚠️</span>
+            <span>Attribution Required</span>
+          </div>
+          <div class="permission-item">
+            <span class="permission-icon forbidden">❌</span>
+            <span>Modifications</span>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+                    </div>
+                </div>
+
+                <!-- Best Practices -->
+                <div class="card best-practices-card">
+                    <div class="card__body">
+                        <h3>Legal Best Practices</h3>
+                        <div class="best-practices-list">
+                            <div class="practice-item">
+                                <div class="practice-icon">✓</div>
+                                <div class="practice-content">
+                                    <h4>Always Save License Documentation</h4>
+                                    <p>Keep records of where you found each asset and what license it uses.</p>
+                                </div>
+                            </div>
+                            <div class="practice-item">
+                                <div class="practice-icon">⚠️</div>
+                                <div class="practice-content">
+                                    <h4>Check for Trademark Issues</h4>
+                                    <p>Even royalty-free assets can contain trademarked logos or products.</p>
+                                </div>
+                            </div>
+                            <div class="practice-item">
+                                <div class="practice-icon">👥</div>
+                                <div class="practice-content">
+                                    <h4>Consider Model Releases</h4>
+                                    <p>Photos with identifiable people may need model releases for commercial use.</p>
+                                </div>
+                            </div>
+                            <div class="practice-item">
+                                <div class="practice-icon">📝</div>
+                                <div class="practice-content">
+                                    <h4>Provide Proper Attribution</h4>
+                                    <p>When required, include creator name, source, and license information.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Guidelines -->
+                <div class="card platform-guidelines-card">
+                    <div class="card__body">
+                        <h3>Platform-Specific Guidelines</h3>
+                        <div class="platform-tabs">
+                            <button class="platform-tab active" data-platform="youtube">YouTube</button>
+                            <button class="platform-tab" data-platform="instagram">Instagram</button>
+                            <button class="platform-tab" data-platform="website">Website</button>
+                        </div>
+                        <div class="platform-content" id="platform-guidelines">
+                            <div class="platform-guide youtube active">
+                                <h4>YouTube Guidelines</h4>
+                                <ul>
+                                    <li>Use only verified royalty-free music to avoid copyright strikes</li>
+                                    <li>Credit sources in video descriptions when required</li>
+                                    <li>Avoid using assets that may trigger Content ID claims</li>
+                                    <li>Consider YouTube's monetization policies for commercial use</li>
+                                </ul>
+                            </div>
+                            <div class="platform-guide instagram">
+                                <h4>Instagram Guidelines</h4>
+                                <ul>
+                                    <li>Ensure commercial use rights for business accounts</li>
+                                    <li>Be mindful of branded content disclosure requirements</li>
+                                    <li>Credit creators in captions when attribution is required</li>
+                                    <li>Consider Instagram's terms for promotional content</li>
+                                </ul>
+                            </div>
+                            <div class="platform-guide website">
+                                <h4>Website Guidelines</h4>
+                                <ul>
+                                    <li>Include attribution pages for credited assets</li>
+                                    <li>Ensure commercial licenses for business websites</li>
+                                    <li>Optimize images while maintaining license compliance</li>
+                                    <li>Document asset sources for legal audit trails</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section id="reports" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Compliance Reports</h2>
+                <div class="report-controls">
+                    <select class="form-control" id="report-type-select">
+                        <option value="usage">Usage Report</option>
+                        <option value="compliance">Compliance Audit</option>
+                        <option value="attribution">Attribution Report</option>
+                        <option value="license">License Summary</option>
+                    </select>
+                    <button class="btn btn--primary" id="generate-report-btn">Generate Report</button>
+                </div>
+            </div>
+
+            <div class="reports-grid">
+                <!-- Report Preview -->
+                <div class="card report-preview-card">
+                    <div class="card__body">
+                        <h3>Report Preview</h3>
+                        <div class="report-content" id="report-preview">
+                            <p class="empty-state">Select a report type and click "Generate Report" to preview your compliance documentation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Options -->
+                <div class="card export-options-card">
+                    <div class="card__body">
+                        <h3>Export Options</h3>
+                        <div class="export-buttons">
+                            <button class="btn btn--secondary" id="export-pdf-btn">Export as PDF</button>
+                            <button class="btn btn--secondary" id="export-csv-btn">Export as CSV</button>
+                            <button class="btn btn--secondary" id="export-json-btn">Export as JSON</button>
+                        </div>
+                        <div class="export-settings">
+                            <div class="form-group">
+                                <label class="form-label">Include Asset Previews</label>
+                                <input type="checkbox" id="include-previews" checked="">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Include License Details</label>
+                                <input type="checkbox" id="include-license-details" checked="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Asset Preview Modal -->
+    <div id="asset-preview-modal" class="modal hidden">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="asset-title">Asset Preview</h3>
+                <button class="modal-close" id="modal-close-preview">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="asset-preview-container">
+                    <div class="asset-preview-media">
+                        <img id="asset-preview-image" src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/6b85444de6c311fec8c69b6156829b05/977b7da1-980e-41de-b752-5293493d461c/index.html" alt="" class="preview-image">
+                    </div>
+                    <div class="asset-preview-details">
+                        <div class="license-info">
+                            <h4>License Information</h4>
+                            <div class="license-details" id="asset-license-details">
+                                <!-- License details populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="asset-metadata">
+                            <h4>Asset Details</h4>
+                            <div class="metadata-grid" id="asset-metadata">
+                                <!-- Metadata populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="compliance-check">
+                            <h4>Compliance Check</h4>
+                            <div class="compliance-warnings" id="compliance-warnings">
+                                <!-- Warnings populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="modal-cancel-preview">Cancel</button>
+                <button class="btn btn--primary" id="save-asset-btn">Save to Library</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Collection Modal -->
+    <div id="create-collection-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Collection</h3>
+                <button class="modal-close" id="modal-close-collection">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Collection Name</label>
+                    <input type="text" class="form-control" id="collection-name" placeholder="e.g., Brand Assets, Social Media Pack">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" id="collection-description" rows="3" placeholder="Describe what this collection will contain..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Collection Type</label>
+                    <select class="form-control" id="collection-type">
+                        <option value="general">General Collection</option>
+                        <option value="project">Project-Based</option>
+                        <option value="theme">Theme-Based</option>
+                        <option value="client">Client Work</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="modal-cancel-collection">Cancel</button>
+                <button class="btn btn--primary" id="create-collection-confirm">Create Collection</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading-indicator hidden" id="loading-indicator">
+        <div class="spinner"></div>
+        <p>Searching assets...</p>
+    </div>
+
+    <script src="./AssetFlow Pro - Content Creator Asset Management_files/app.js.download"></script>
+
+</body></html>
